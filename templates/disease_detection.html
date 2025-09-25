@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3>Plant Disease Detection</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('disease_detection') }}" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Upload Plant Image</label>
+                        <input class="form-control" type="file" id="file" name="file" accept="image/*" required>
+                        <div class="form-text">Upload a clear image of plant leaves (JPG/PNG)</div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Detect Disease</button>
+                </form>
+
+                {% if prediction %}
+                <div class="mt-4">
+                    <div class="alert {% if prediction == 'Healthy' %}alert-success{% else %}alert-danger{% endif %}">
+                        <h4>Detection Result: {{ prediction }}</h4>
+                    </div>
+                    {% if image_url %}
+                    <div class="text-center mt-3">
+                        <img src="{{ image_url }}" class="img-fluid rounded" style="max-height: 300px;" alt="Uploaded Image">
+                        <p class="mt-2">Uploaded Image</p>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

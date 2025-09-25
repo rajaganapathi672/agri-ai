@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Yield Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 30px 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+        h2 {
+            text-align: center;
+            color: #2d3436;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #2f3542;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            margin-top: 25px;
+            background-color: #2e86de;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .result {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #16a085;
+            font-weight: bold;
+        }
+        .error {
+            color: #e74c3c;
+            text-align: center;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Crop Yield Prediction</h2>
+        <form method="post">
+            <label for="soil_type">Soil Type:</label>
+            <select name="soil_type" required>
+                {% for name in soil_types %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="crop_type">Crop Type:</label>
+            <select name="crop_type" required>
+                {% for name in crop_types %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="number" step="any" name="rainfall" required>
+
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="any" name="temperature" required>
+
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" step="any" name="humidity" required>
+
+            <label for="fertilizer_type">Fertilizer Type:</label>
+            <select name="fertilizer_type" required>
+                {% for name in fertilizer_types %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="submit" value="Predict Yield">
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        {% if prediction %}
+        <div class="result">
+            Predicted Yield: {{ prediction }} tons/acre
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

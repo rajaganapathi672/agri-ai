@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="display-4 mb-4">Agri AI System</h1>
+        <p class="lead">Smart agriculture solutions powered by AI</p>
+        <div class="row mt-5">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Crop Yield Prediction</h5>
+                        <p class="card-text">Predict your crop yield based on environmental factors and farming practices.</p>
+                        <a href="{{ url_for('crop_yield') }}" class="btn btn-success">Try Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Plant Disease Detection</h5>
+                        <p class="card-text">Upload plant leaf images to detect potential diseases early.</p>
+                        <a href="{{ url_for('disease_detection') }}" class="btn btn-success">Try Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

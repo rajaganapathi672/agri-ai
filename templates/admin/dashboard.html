@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">Admin Dashboard</h2>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Crop Predictions</h5>
+                        <p class="card-text">View all crop yield predictions</p>
+                        <a href="#" class="btn btn-light">View Data</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <h5 class="card-title">Disease Detections</h5>
+                        <p class="card-text">View all disease detection results</p>
+                        <a href="#" class="btn btn-light">View Data</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card text-white bg-secondary">
+                    <div class="card-body">
+                        <h5 class="card-title">User Management</h5>
+                        <p class="card-text">Manage system users</p>
+                        <a href="#" class="btn btn-light">Manage Users</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h4>System Statistics</h4>
+            </div>
+            <div class="card-body">
+                <p>Total predictions made: 0</p>
+                <p>Total disease detections: 0</p>
+                <p>Registered users: 1</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
